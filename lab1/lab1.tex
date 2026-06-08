@@ -1,0 +1,286 @@
+\input{preamble.tex}
+\begin{document}
+\begin{titlepage}
+    \begin{center}
+        \textbf{\LARGE{} Лабораторная работа}\\
+    \end{center}
+    \vfill
+    \begin{flushright}
+        \large Павлов Александр Сергеевич\\
+        \textbf{Группа:} 22107\\
+    \end{flushright}
+\end{titlepage}
+
+\newpage
+\tableofcontents
+
+\newpage
+\chapter{Введение}
+Обычный текст до цветного блока.
+
+\colorbox{yellow!20}{%
+    \begin{minipage}{\textwidth}
+        Этот текст будет на желтом фоне. 
+        \blindtext[1]
+    \end{minipage}%
+}
+
+А это обычный текст после цветного блока.
+Подробнее о LaTeX можно узнать 
+\href{https://www.overleaf.com/learn}{здесь}.
+В таблице~\ref{tab:smeshariki} на странице~\pageref{tab:smeshariki}
+представлены любимые персонажи. 
+
+\newpage
+\pagecolor{yellow!20}
+\begin{landscape}
+    \chapter{Альбомный лист}
+    \begin{enumerate}
+        \item Написание преамбулы
+        \begin{enumerate}
+            \item Вспомнить лекцию
+            \item Понять, что ничего не помнишь
+            \item Обратиться к материалам лекции
+        \end{enumerate}
+        \item Создание титульного листа
+        \item Создание списков
+    \end{enumerate}
+\end{landscape}
+
+
+\newpage
+\pagecolor{white}
+\chapter{Всякая всячина}
+\section{Утром}
+
+\begin{itemize}
+    \item Пресс качат
+    \item Бегит
+    \item Турник
+    \item Анжуманя
+\end{itemize}
+
+
+\section{Вечером}
+
+\begin{itemize}
+    \item Пресс качат
+    \item Бегит
+    \item Турник
+    \item Анжуманя
+\end{itemize}
+
+    \begin{table}[h!]
+        \centering
+        \caption{Персонажи смешариков}
+    \label{tab:smeshariki}
+    \begin{tabular}{l|c}
+        \hline
+        \textbf{Персонаж} & \textbf{Описание} \\
+        \hline
+        \textcolor{blue}{Крош} & Синий кролик, очень активный \\
+        \hline
+        \textcolor{yellow}{Лосяш} & Желтый лось, очень умный \\
+        \hline
+        Карыч & Синий ворон, очень мудрый \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\newpage
+\section{Таблица с объединением столбцов}
+\begin{table}[h!]
+    \centering
+    \caption{Зачет по линалейной алгебре}
+    \label{tab:linal1}
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        \multicolumn{2}{|c|}{Условия} & \multicolumn{2}{c|}{Результаты} \\
+        \hline
+        Оценка за 1 контрольную & Оценка за 2 контрольную & Оценка студента & Оценка студента \\
+        \hline
+        удовлетворительно & удовлетворительно & отлично & хорошо \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\section{Таблица с объединением строк}
+\begin{table}[h!]
+    \centering
+    \caption{Зачет по линейной алгебре}
+    \label{tab:linal2}
+    \begin{tabular}{|c|c|c|}
+        \hline
+        \multirow{2}{*}{Условия} & Оценка за 1 КР & Оценка за 2 КР \\
+        \cline{2-3}
+        & удовлетворительно & удовлетворительно \\
+        \hline
+        \multirow{2}{*}{Результат} & Оценка студента & Оценка студента \\
+        \cline{2-3}
+        & отлично & отлично \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\section{Таблица с разными границами}
+
+\begin{table}[h!]
+    \centering
+    \caption{Итоговая таблица}
+    \label{tab:final}
+    \begin{tabular}{|c|c||c|c||c|}
+        \hline
+        \multicolumn{2}{|c||}{Параметры} & \multicolumn{2}{c||}{Измерения} & \multirow{2}{*}{Ед. изм.} \\
+        \cline{1-4}
+        № & Название & Мин & Макс & \\
+        \hline\hline
+        1 & Температура & 22.5 & 24.8 & °C \\
+        \hline
+        2 & Давление & 745 & 752 & мм рт.ст. \\
+        \hline
+        3 & Влажность & 45 & 60 & \% \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\newpage
+\section{Картинка}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.3\textwidth]{images.jpg}
+    \caption{Ждун}
+    \label{fig:myimage}
+\end{figure}
+\newpage
+\section{Код}
+\lstinputlisting[language=python, numbers=left, firstnumber=2, firstline=2, lastline=4 caption={Код на Python}]{lab1.py}
+
+
+\newpage
+\section{Отрывок из учебника по математическому анализу \cite{math_analiz}}
+\begin{center}
+\textit{\S 3. Элементарные функции}
+\end{center}
+\hspace{0.5cm} Лемма 2. \textit{Пусть $P(x)$ и $Q(x)$ --- многочлены действительными коэффицентами, причем} $\frac{P(x)}{Q(x)}$ --- правильная рациональная дробь. \par
+\indent \textit{Если число $z_0 = x_0 + y_0i$, $x_0 \in \mathbb{R}$, $y_0 \in \mathbb{R}$,
+ $y_0 \neq 0$, является корнем кратности $m \geq 1$ многочлена $Q(x)$, т. е.}
+\begin{equation}  
+    \label{eq:1}
+    Q(x) = (x^2+px+q)^mQ_1(x)
+\end{equation}
+\textit{где}
+
+\begin{equation}  
+    \label{eq:2}
+    Q_1(z_0) \neq 0,\quad x^2 +px + q = (x-z_0)(x-\bar{z_0})
+\end{equation}
+
+\textit{то существуют такие единственные действительные числа $B$, $C$
+и многочлен $P_1(x)$ с действительными коэфицентами, что }
+
+\begin{equation}
+    \label{eq:3}
+    \frac{P(x)}{Q(x)}=\frac{B_x+C}{(x^2+px+q)^m}+\frac{P_1(X)}{(x^2+px+q)^{m-1}Q_1(x)}
+\end{equation}
+
+\textit{где дробь}
+\begin{equation}
+    \label{eq:4}
+    \frac{P_1(x)}{(x^2+px+q)^{m-1}Q_1(m)}
+\end{equation}
+\textit{также является правильной.} \par
+
+\noindent $\triangleright$ Для любых действительных чисел $B$ и $C$ имеем \par
+\noindent $\frac{P(x)}{Q(x)}=\frac{P(x)}{(x^2+px+q)^mQ_1(x)}=$ \par
+$=\frac{B_x+C}{(x^2+px+q)^m} + 
+\Biggl[\frac{P(x)}{(x^2+px+q)^(m)Q_1(x)} - \frac{B_x+C}{(x^2+px+q)^m} \Biggr] =$ \par
+\hspace{2.5cm} $= \frac{B_x+C}{(x^2+px+q)^m}+\frac{P(x)-(B_x+C)Q_1(x)}{(x^2+px+q)^mQ_1(x)}$ 
+\par
+
+\indent \textit{Рассуждениями, аналогичными проведенным при доказательстве леммы 1, легко убедиться, что дробь}
+\begin{equation}
+    \label{eq:5}
+    \frac{P(x)-(B_x+C)Q_1(x)}{(x^2+px+q)^mQ_1(x)}
+\end{equation}
+является правильной и что коэфиценты многочленов, стоящих у нее в числителе и знаменателе, являются действительными. \par
+\indent Для того чтобы дробь (\ref{eq:5}) имела вид
+\begin{equation}
+    \label{eq:6}
+    \frac{P_1(x)}{(x^2+px+q)^{m-1}Q_1(x)}
+\end{equation}
+необходимо и достаточно, чтобы ее множитель $x^2+px+q=(x-z_0)(x-\bar{z_0})$, а это можно сделать тогда и только тогда, когда числитель дроби (\ref{eq:5}) делится на $x^2+px+q=(x-z_0)(x-\bar{z_0})$,
+что согласно теореме Безу равносильно тому, что число $z_0$ является норнем многочлена, стоящего в числители дроби (\ref{eq:5}), т. е. когда
+\[P(z_0)-(Bz_0+C)Q_1(z_0)=0.\]
+
+
+\chapter{Четвертое задание}
+\section{Визуализация графиков, диаграмм и других математических объектов}
+
+\begin{figure}[h!]
+\centering
+\begin{gnuplot}[terminal=pdf]
+set xlabel "x"
+set ylabel "y"
+set title "График функции x^2"
+plot x**2 title "f(x) = x^2" with lines
+\end{gnuplot}
+\caption{Квадратичная функция}
+\label{fig:quadratic}
+\end{figure}
+
+\begin{figure}[h!]
+\centering
+\begin{gnuplot}[terminal=pdf, scale=1.0]
+set xlabel "x"
+set ylabel "y"
+set key right bottom
+plot sin(x) title "\sin x", cos(x) title "\cos x"
+\end{gnuplot}
+\caption{Тригонометрические функции}
+\label{fig:trig}
+\end{figure}
+
+\newpage
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}
+    \begin{polaraxis}
+        \addplot[blue, thick, domain=0:360] {2};
+    \end{polaraxis}
+\end{tikzpicture}
+\caption{Окружность \( r = 2 \)}
+\end{figure}
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}
+    \begin{axis}[
+        view={60}{30},
+        axis equal,
+        colormap/spring,
+        title={Конус}
+    ]
+    \addplot3[
+        surf,
+        shader=interp,
+        samples=30,
+        domain=0:2*pi, y domain=0:2,
+        z buffer=sort
+    ]
+    ({ y*cos(deg(x)) },
+     { y*sin(deg(x)) },
+     { y });
+    \end{axis}
+\end{tikzpicture}
+\caption{Конус $r = z$}
+\label{fig:cone}
+\end{figure}
+
+\begin{thebibliography}{9}
+    \bibitem{math_analiz} Кудрявцев Л.Д. Краткий курс математического анализа. М.: Физматлит, 2009.
+    \bibitem{latex_guide} Н.С. Беляков, В.Е. Палош, П.А. Садовский ТЕХ для всех. Оформление учебных и научных работ в системе LATEX. [Электронный ресурс]. URL:\url{https://biblioclub.ru/index.php?page=book&id=447830}
+
+\end{thebibliography}
+
+\end{document}

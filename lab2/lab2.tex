@@ -1,0 +1,191 @@
+\documentclass[10pt, aspectratio=169]{beamer}
+
+% --- Пакеты для русского языка и математики ---
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath, amsfonts, amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{tikz}
+
+% --- МОДИФИКАЦИЯ ТЕМЫ ---
+\usetheme{Madrid}
+\useinnertheme{rounded} % Закругленные углы для блоков
+
+% Настройка собственной цветовой схемы
+\definecolor{DeepBlue}{RGB}{20, 40, 80}
+\definecolor{ScienceGreen}{RGB}{0, 120, 80}
+
+\setbeamercolor{palette primary}{bg=DeepBlue, fg=white}
+\setbeamercolor{palette secondary}{bg=ScienceGreen, fg=white}
+\setbeamercolor{palette tertiary}{bg=white, fg=DeepBlue}
+\setbeamercolor{titlelike}{parent=palette primary}
+\setbeamercolor{block title}{bg=DeepBlue, fg=white}
+\setbeamercolor{block body}{bg=gray!10, fg=black}
+
+% --- АВТОМАТИЧЕСКОЕ ОГЛАВЛЕНИЕ В НАЧАЛЕ СЕКЦИЙ ---
+\AtBeginSection[]
+{
+  \begin{frame}{План выступления}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+% --- ТИТУЛЬНЫЙ ЛИСТ ---
+\title[Теория графов]{Введение в спектральную теорию графов}
+\subtitle{Методы и приложения в анализе данных}
+\author[Павлов А.С.]{Павлов Александр Сергеевич}
+\institute[ПЕТРГУ]{Петрозаводский государственный университет}
+\date[2026]{Май 2026}
+
+\begin{document}
+
+% Слайд 1: Титульный
+\begin{frame}
+    \titlepage
+\end{frame}
+
+% Слайд 2: Содержание
+\begin{frame}{Содержание презентации}
+    \tableofcontents
+\end{frame}
+
+% --- СЕКЦИЯ 1: Базовые понятия ---
+\section{Основные определения}
+
+% Слайд 3: Определение
+\begin{frame}{Математическая модель графа}
+    \begin{definition}
+        Неориентированным графом $G$ называется упорядоченная пара $(V, E)$, где:
+        \begin{itemize}
+            \item $V$ — непустое множество \textbf{вершин};
+            \item $E$ — множество пар вершин, называемых \textbf{ребрами}.
+        \end{itemize}
+    \end{definition}
+    \pause
+    \begin{exampleblock}{Пример}
+        Социальная сеть: пользователи ($V$) и связи между ними ($E$).
+    \end{exampleblock}
+\end{frame}
+
+% Слайд 4: Матричное представление
+\begin{frame}{Матричное представление графа}
+    Для анализа структуры графа используется матрица смежности $A$:
+    \begin{equation}
+        A_{ij} = 
+        \begin{cases} 
+        1, & \text{если } (v_i, v_j) \in E \\
+        0, & \text{в противном случае}
+        \end{cases}
+    \end{equation}
+    \vspace{0.5cm}
+    \begin{itemize}
+        \item<2-> Матрица всегда симметрична для неориентированных графов.
+        \item<3-> Сумма элементов $i$-й строки равна степени вершины $d(v_i)$.
+    \end{itemize}
+\end{frame}
+
+% --- СЕКЦИЯ 2: Фундаментальные теоремы ---
+\section{Спектральные свойства}
+
+% Слайд 5: Теорема и нумерованная формула
+\begin{frame}{Основная лемма о степенях}
+    Рассмотрим связь между количеством ребер и степенями вершин.
+    
+    \begin{theorem}[Лемма о рукопожатиях]
+        Для любого графа $G = (V, E)$ сумма степеней всех его вершин является четным числом и равна удвоенному количеству ребер.
+    \end{theorem}
+    
+    \begin{equation}
+        \sum_{v \in V} \text{deg}(v) = 2|E|
+    \end{equation}
+    \pause
+    \textit{Следствие:} В любом графе число вершин нечетной степени четно.
+\end{frame}
+
+% Слайд 6: Оператор Лапласа
+\begin{frame}{Матрица Лапласа}
+    Важнейшим объектом спектральной теории является матрица $L = D - A$:
+    
+    \begin{equation}
+        L_{ij} = 
+        \begin{cases} 
+        d(v_i), & \text{если } i = j \\
+        -1, & \text{если } i \neq j \text{ и } (v_i, v_j) \in E \\
+        0, & \text{в противном случае}
+        \end{cases}
+    \end{equation}
+    
+    \pause
+    \begin{block}{Свойство}
+        Спектр матрицы $L$ несет информацию о связности графа.
+    \end{block}
+\end{frame}
+
+% --- СЕКЦИЯ 3: Интерактивные фрагменты ---
+\section{Динамика и визуализация}
+
+% Слайд 7: Поэтапный показ (Interactive 1)
+\begin{frame}{Поэтапный алгоритм обхода}
+    Процесс обработки графа в ширину (BFS):
+    \begin{enumerate}
+        \item<1-> Поместить начальную вершину в очередь.
+        \item<2-> Пометить вершину как посещенную.
+        \item<3-> Добавить всех соседей в конец очереди.
+        \item<4-> Повторять, пока очередь не пуста.
+    \end{enumerate}
+    \uncover<5->{
+        \begin{alertblock}{Важно!}
+            Сложность алгоритма: $O(V + E)$.
+        \end{alertblock}
+    }
+\end{frame}
+
+% Слайд 8: Смена элементов (Interactive 2)
+\begin{frame}{Сравнение типов графов}
+    Нажмите кнопку «далее», чтобы увидеть отличия:
+    \vspace{0.5cm}
+    
+    \centering
+    \alt<1>{
+        \textbf{Плотные графы} \\
+        \begin{itemize}
+            \item Число ребер $|E| \approx |V|^2$.
+            \item Хранятся матрицами смежности.
+        \end{itemize}
+    }{
+        \textbf{Разреженные графы} \\
+        \begin{itemize}
+            \item Число ребер $|E| \approx |V|$.
+            \item Хранятся списками смежности.
+        \end{itemize}
+    }
+\end{frame}
+
+% Слайд 9: Динамические формулы (Interactive 3)
+\begin{frame}{Эволюция спектра}
+    Как меняется нормализованный Лапласиан?
+    \vspace{1cm}
+    \[
+    \mathcal{L} = 
+    \only<1>{D^{-1/2} L D^{-1/2}}
+    \only<2>{I - D^{-1/2} A D^{-1/2}}
+    \]
+    \vspace{1cm}
+    \begin{itemize}
+        \item<1> Показывается стандартное определение.
+        \item<2> Показывается форма через единичную матрицу $I$.
+    \end{itemize}
+\end{frame}
+
+% Слайд 10: Заключение
+\begin{frame}{Заключение}
+    \begin{itemize}
+        \item Теория графов — основа современного анализа сетей.
+        \item Спектральные методы позволяют эффективно сжимать данные.
+        \item \textbf{Спасибо за внимание!}
+    \end{itemize}
+    \vspace{1cm}
+\end{frame}
+
+\end{document}
